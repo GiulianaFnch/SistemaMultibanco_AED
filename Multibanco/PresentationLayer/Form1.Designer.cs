@@ -71,6 +71,7 @@
             btnConfirmarOperacao = new Button();
             btnCancelarOperacao = new Button();
             lblMensagemOperacao = new Label();
+            btnAdmin = new Button();
             pnlLogin.SuspendLayout();
             pnlMenu.SuspendLayout();
             pnlOperacao.SuspendLayout();
@@ -92,6 +93,7 @@
             // pnlLogin
             // 
             pnlLogin.BackColor = Color.WhiteSmoke;
+            pnlLogin.Controls.Add(btnAdmin);
             pnlLogin.Controls.Add(lblAccount);
             pnlLogin.Controls.Add(txtAccount);
             pnlLogin.Controls.Add(lblPin);
@@ -334,6 +336,18 @@
             lblMensagemOperacao.Size = new Size(0, 17);
             lblMensagemOperacao.TabIndex = 5;
             // 
+            // btnAdmin
+            // 
+            btnAdmin.BackColor = Color.Khaki;
+            btnAdmin.Font = new Font("Segoe UI", 15F);
+            btnAdmin.Location = new Point(563, 410);
+            btnAdmin.Name = "btnAdmin";
+            btnAdmin.Size = new Size(168, 50);
+            btnAdmin.TabIndex = 6;
+            btnAdmin.Text = "Admin SIBS";
+            btnAdmin.UseVisualStyleBackColor = false;
+            btnAdmin.Click += btnAdmin_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -363,5 +377,6 @@
         private Label lblAccount;
         private Label lblPin;
         private Label lblInfo;
+        private Button btnAdmin;
     }
 }

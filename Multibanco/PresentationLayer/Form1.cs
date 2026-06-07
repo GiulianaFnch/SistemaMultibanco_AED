@@ -1,5 +1,6 @@
-using Multibanco.Models;
 using Multibanco.BusinessLogicLayer; // Importar a Lógica
+using Multibanco.Models;
+using Multibanco.PresentationLayer;
 
 namespace Multibanco
 {
@@ -182,6 +183,12 @@ namespace Multibanco
         private void lblInfo_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            FormAdmin formAdmin = new FormAdmin();
+            formAdmin.Show();
         }
     }
 }
