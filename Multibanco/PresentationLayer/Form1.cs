@@ -106,6 +106,14 @@ namespace Multibanco
             form.ShowDialog(this);
         }
 
+        // Logo a seguir ao login, abre automaticamente o extrato para o cliente
+        // ver de imediato a sua atividade recente (requisito do Elemento 3).
+        private void MostrarMovimentosAutomaticamente()
+        {
+            var form = new FormMovimentos(currentAccount, _accountService);
+            form.ShowDialog(this);
+        }
+
         // --- Login ---
 
         private void BtnLogin_Click(object sender, EventArgs e)
@@ -121,6 +129,7 @@ namespace Multibanco
             if (currentAccount != null)
             {
                 MostrarMenu();
+                MostrarMovimentosAutomaticamente(); // Elemento 3: abre o extrato logo após o login
             }
             else
             {
