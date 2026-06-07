@@ -40,71 +40,83 @@
             // lblNome
             // 
             lblNome.AutoSize = true;
-            lblNome.Font = new Font("Segoe UI", 15F);
-            lblNome.Location = new Point(60, 82);
+            lblNome.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            lblNome.ForeColor = SystemColors.ControlLightLight;
+            lblNome.Location = new Point(92, 78);
             lblNome.Name = "lblNome";
-            lblNome.Size = new Size(70, 28);
+            lblNome.Size = new Size(102, 37);
             lblNome.TabIndex = 0;
             lblNome.Text = "Nome:";
             // 
             // lblNIF
             // 
             lblNIF.AutoSize = true;
-            lblNIF.Font = new Font("Segoe UI", 15F);
-            lblNIF.Location = new Point(60, 156);
+            lblNIF.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            lblNIF.ForeColor = SystemColors.ControlLightLight;
+            lblNIF.Location = new Point(102, 152);
             lblNIF.Name = "lblNIF";
-            lblNIF.Size = new Size(46, 28);
+            lblNIF.Size = new Size(68, 37);
             lblNIF.TabIndex = 1;
             lblNIF.Text = "NIF:";
             // 
             // lblSaldo
             // 
             lblSaldo.AutoSize = true;
-            lblSaldo.Font = new Font("Segoe UI", 15F);
-            lblSaldo.Location = new Point(51, 243);
+            lblSaldo.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            lblSaldo.ForeColor = SystemColors.ControlLightLight;
+            lblSaldo.Location = new Point(75, 326);
             lblSaldo.Name = "lblSaldo";
-            lblSaldo.Size = new Size(170, 28);
+            lblSaldo.Size = new Size(186, 28);
             lblSaldo.TabIndex = 2;
             lblSaldo.Text = "Saldo Inicial: 100€";
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(147, 87);
+            txtNome.Font = new Font("Segoe UI", 15F);
+            txtNome.Location = new Point(229, 82);
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(100, 23);
+            txtNome.Size = new Size(147, 34);
             txtNome.TabIndex = 3;
             // 
             // txtNIF
             // 
-            txtNIF.Location = new Point(147, 161);
+            txtNIF.Font = new Font("Segoe UI", 15F);
+            txtNIF.Location = new Point(229, 156);
             txtNIF.Name = "txtNIF";
-            txtNIF.Size = new Size(100, 23);
+            txtNIF.Size = new Size(147, 34);
             txtNIF.TabIndex = 4;
             // 
             // btnGuardar
             // 
-            btnGuardar.Font = new Font("Segoe UI", 15F);
-            btnGuardar.Location = new Point(483, 126);
+            btnGuardar.BackColor = Color.DodgerBlue;
+            btnGuardar.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            btnGuardar.ForeColor = SystemColors.ControlLightLight;
+            btnGuardar.Location = new Point(607, 233);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(125, 49);
             btnGuardar.TabIndex = 5;
             btnGuardar.Text = "Guardar";
-            btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // btnCancelar
             // 
-            btnCancelar.Font = new Font("Segoe UI", 15F);
-            btnCancelar.Location = new Point(483, 197);
+            btnCancelar.BackColor = Color.Firebrick;
+            btnCancelar.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            btnCancelar.ForeColor = SystemColors.ControlLightLight;
+            btnCancelar.Location = new Point(607, 316);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(125, 49);
             btnCancelar.TabIndex = 6;
             btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // FormAdicionarCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.DarkCyan;
             ClientSize = new Size(813, 423);
             Controls.Add(btnCancelar);
             Controls.Add(btnGuardar);

@@ -38,56 +38,71 @@
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Segoe UI", 20F);
-            lblTitulo.Location = new Point(269, 60);
+            lblTitulo.BackColor = Color.DarkCyan;
+            lblTitulo.Font = new Font("Segoe UI", 25F, FontStyle.Bold);
+            lblTitulo.ForeColor = SystemColors.ControlLightLight;
+            lblTitulo.Location = new Point(233, 42);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(203, 37);
+            lblTitulo.Size = new Size(272, 46);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Eliminar Cliente";
             // 
             // lblID
             // 
             lblID.AutoSize = true;
-            lblID.Font = new Font("Segoe UI", 16F);
-            lblID.Location = new Point(47, 150);
+            lblID.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblID.ForeColor = SystemColors.ControlLightLight;
+            lblID.Location = new Point(200, 190);
             lblID.Name = "lblID";
-            lblID.Size = new Size(144, 30);
+            lblID.Size = new Size(153, 30);
             lblID.TabIndex = 1;
             lblID.Text = "ID do Cliente:";
+            
             // 
             // btnCancelar
             // 
-            btnCancelar.Font = new Font("Segoe UI", 16F);
+            btnCancelar.BackColor = Color.FromArgb(192, 0, 0);
+            btnCancelar.FlatAppearance.BorderSize = 0;
+            btnCancelar.FlatStyle = FlatStyle.Flat;
+            btnCancelar.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            btnCancelar.ForeColor = SystemColors.ControlLightLight;
             btnCancelar.Location = new Point(605, 322);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(151, 56);
             btnCancelar.TabIndex = 2;
             btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
-            btnCancelar.Click += btnCancelar_Click_1;
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnEliminar
             // 
-            btnEliminar.Font = new Font("Segoe UI", 16F);
+            btnEliminar.BackColor = Color.DarkGoldenrod;
+            btnEliminar.FlatAppearance.BorderSize = 0;
+            btnEliminar.FlatStyle = FlatStyle.Flat;
+            btnEliminar.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            btnEliminar.ForeColor = SystemColors.ControlLightLight;
             btnEliminar.Location = new Point(40, 322);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(151, 56);
             btnEliminar.TabIndex = 3;
             btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = true;
-            btnEliminar.Click += btnEliminar_Click_1;
+            btnEliminar.UseVisualStyleBackColor = false;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // txtID
             // 
-            txtID.Location = new Point(210, 157);
+            txtID.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            txtID.Location = new Point(359, 188);
             txtID.Name = "txtID";
-            txtID.Size = new Size(100, 23);
+            txtID.Size = new Size(146, 34);
             txtID.TabIndex = 4;
+            txtID.TextChanged += txtID_TextChanged;
             // 
             // FormEliminarCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.DarkCyan;
             ClientSize = new Size(800, 450);
             Controls.Add(txtID);
             Controls.Add(btnEliminar);

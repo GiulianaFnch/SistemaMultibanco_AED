@@ -79,7 +79,7 @@
             btnFechar.TabIndex = 4;
             btnFechar.Text = "Fechar";
             btnFechar.UseVisualStyleBackColor = true;
-            btnFechar.Click += btnFechar_Click_1;
+            btnFechar.Click += btnFechar_Click;
             // 
             // FormListarClientes
             // 

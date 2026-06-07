@@ -104,7 +104,7 @@
             // 
             // pnlAdmin
             // 
-            pnlAdmin.BackColor = SystemColors.ControlDark;
+            pnlAdmin.BackColor = Color.DarkCyan;
             pnlAdmin.BorderStyle = BorderStyle.FixedSingle;
             pnlAdmin.Controls.Add(lblSibisMenu);
             pnlAdmin.Controls.Add(btnAdicionarConta);
@@ -121,7 +121,7 @@
             // 
             // btnAdicionarConta
             // 
-            btnAdicionarConta.BackColor = Color.PaleGoldenrod;
+            btnAdicionarConta.BackColor = Color.DarkSeaGreen;
             btnAdicionarConta.FlatAppearance.BorderSize = 0;
             btnAdicionarConta.FlatStyle = FlatStyle.Flat;
             btnAdicionarConta.Font = new Font("Segoe UI", 15F);
@@ -151,13 +151,13 @@
             // 
             // btnListarContas
             // 
-            btnListarContas.BackColor = Color.PaleGoldenrod;
+            btnListarContas.BackColor = Color.DarkSeaGreen;
             btnListarContas.FlatAppearance.BorderSize = 0;
             btnListarContas.FlatStyle = FlatStyle.Flat;
-            btnListarContas.Font = new Font("Segoe UI", 15F);
-            btnListarContas.Location = new Point(178, 273);
+            btnListarContas.Font = new Font("Segoe UI", 10F);
+            btnListarContas.Location = new Point(293, 262);
             btnListarContas.Name = "btnListarContas";
-            btnListarContas.Size = new Size(146, 66);
+            btnListarContas.Size = new Size(98, 42);
             btnListarContas.TabIndex = 3;
             btnListarContas.Text = "Listar Contas";
             btnListarContas.UseVisualStyleBackColor = false;
@@ -165,11 +165,11 @@
             // 
             // btnEliminarCliente
             // 
-            btnEliminarCliente.BackColor = Color.PaleGoldenrod;
+            btnEliminarCliente.BackColor = Color.DarkSeaGreen;
             btnEliminarCliente.FlatAppearance.BorderSize = 0;
             btnEliminarCliente.FlatStyle = FlatStyle.Flat;
             btnEliminarCliente.Font = new Font("Segoe UI", 15F);
-            btnEliminarCliente.Location = new Point(390, 273);
+            btnEliminarCliente.Location = new Point(542, 202);
             btnEliminarCliente.Name = "btnEliminarCliente";
             btnEliminarCliente.Size = new Size(146, 66);
             btnEliminarCliente.TabIndex = 2;
@@ -179,7 +179,7 @@
             // 
             // btnAdicionarCliente
             // 
-            btnAdicionarCliente.BackColor = Color.PaleGoldenrod;
+            btnAdicionarCliente.BackColor = Color.DarkSeaGreen;
             btnAdicionarCliente.FlatAppearance.BorderSize = 0;
             btnAdicionarCliente.FlatStyle = FlatStyle.Flat;
             btnAdicionarCliente.Font = new Font("Segoe UI", 15F);
@@ -194,14 +194,14 @@
             // 
             // btnListarClientes
             // 
-            btnListarClientes.BackColor = Color.PaleGoldenrod;
+            btnListarClientes.BackColor = Color.DarkSeaGreen;
             btnListarClientes.FlatAppearance.BorderColor = Color.White;
             btnListarClientes.FlatAppearance.BorderSize = 0;
             btnListarClientes.FlatStyle = FlatStyle.Flat;
-            btnListarClientes.Font = new Font("Segoe UI", 15F);
-            btnListarClientes.Location = new Point(480, 166);
+            btnListarClientes.Font = new Font("Segoe UI", 10F);
+            btnListarClientes.Location = new Point(111, 262);
             btnListarClientes.Name = "btnListarClientes";
-            btnListarClientes.Size = new Size(146, 66);
+            btnListarClientes.Size = new Size(110, 42);
             btnListarClientes.TabIndex = 0;
             btnListarClientes.Text = "Listar Clientes";
             btnListarClientes.UseVisualStyleBackColor = false;
@@ -210,11 +210,11 @@
             // lblSibisMenu
             // 
             lblSibisMenu.AutoSize = true;
-            lblSibisMenu.Font = new Font("Segoe UI", 25F, FontStyle.Bold);
+            lblSibisMenu.Font = new Font("Sans Serif Collection", 29.9999962F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSibisMenu.ForeColor = SystemColors.ControlText;
-            lblSibisMenu.Location = new Point(203, 53);
+            lblSibisMenu.Location = new Point(192, 26);
             lblSibisMenu.Name = "lblSibisMenu";
-            lblSibisMenu.Size = new Size(333, 46);
+            lblSibisMenu.Size = new Size(434, 136);
             lblSibisMenu.TabIndex = 6;
             lblSibisMenu.Text = "Administrador SIBS";
             lblSibisMenu.Click += lblSibisMenu_Click;
