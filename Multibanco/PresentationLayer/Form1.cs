@@ -15,8 +15,9 @@ namespace Multibanco
         private Button btnPagamentos;
         private Button btnEmprestimo;
 
-        // Botão adicionado pelo Elemento 3 (mesmo método: criado via código)
+        // Botões adicionados pelo Elemento 3 (mesmo método: criados via código)
         private Button btnMovimentos;
+        private Button btnMBWay;
 
         public Form1()
         {
@@ -26,9 +27,10 @@ namespace Multibanco
             AdicionarBotoesExtras();
             AdicionarBotoesElemento3();
 
-            // Carrega alguns movimentos de exemplo para a demonstração do extrato
-            // (só corre uma vez; ver DadosDemo.cs). Quando o SQL estiver ligado, basta remover esta linha.
+            // Carrega dados de exemplo para a demonstração (movimentos e MBWay).
+            // Só correm uma vez; ver DadosDemo.cs. Quando o SQL estiver ligado, basta remover estas linhas.
             DadosDemo.CarregarMovimentosExemplo();
+            DadosDemo.CarregarMBWayExemplo();
         }
 
         private void ConfigurarEventos()
@@ -96,13 +98,34 @@ namespace Multibanco
             };
             btnMovimentos.Click += BtnMovimentos_Click;
 
+            btnMBWay = new Button
+            {
+                BackColor               = Color.MediumVioletRed,
+                Cursor                  = Cursors.Hand,
+                Font                    = new Font("Arial", 12F, FontStyle.Bold),
+                ForeColor               = Color.White,
+                Location                = new Point(330, 280),
+                Size                    = new Size(220, 50),
+                Text                    = "📱 MBWAY",
+                UseVisualStyleBackColor = false
+            };
+            btnMBWay.Click += BtnMBWay_Click;
+
             pnlMenu.Controls.Add(btnMovimentos);
+            pnlMenu.Controls.Add(btnMBWay);
         }
 
         // Abre o extrato (FormMovimentos) com a conta atual.
         private void BtnMovimentos_Click(object sender, EventArgs e)
         {
             var form = new FormMovimentos(currentAccount, _accountService);
+            form.ShowDialog(this);
+        }
+
+        // Abre o formulário MBWay com a conta atual.
+        private void BtnMBWay_Click(object sender, EventArgs e)
+        {
+            var form = new FormMBWay(currentAccount, _accountService);
             form.ShowDialog(this);
         }
 

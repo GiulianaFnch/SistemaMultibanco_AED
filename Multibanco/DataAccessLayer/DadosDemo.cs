@@ -37,5 +37,23 @@ namespace Multibanco.DataAccessLayer
             repo.RegistarMovimento(new Movimento { IdConta = 3, Data = DateTime.Now.AddDays(-20), Tipo = "Pagamento",     Valor = -130.75m, Descricao = "Pagamento Luz - Ref: 998877" });
             repo.RegistarMovimento(new Movimento { IdConta = 3, Data = DateTime.Now.AddDays(-1),  Tipo = "Depósito",      Valor =  1000.00m, Descricao = "Depósito em numerário" });
         }
+
+        private static bool _mbwayCarregado = false;
+
+        // Deixa duas contas de teste já com MBWay ativo, para que seja possível
+        // experimentar o envio de dinheiro logo na demonstração:
+        //   - Maria Santos  (987654321) -> telemóvel 912000002
+        //   - Pedro Oliveira(555666777) -> telemóvel 912000003
+        // Assim, ao entrar com a conta do João (123456789), pode ativar o seu MBWay
+        // e enviar dinheiro para 912000002 ou 912000003.
+        public static void CarregarMBWayExemplo()
+        {
+            if (_mbwayCarregado) return; // garante que só corre uma vez
+            _mbwayCarregado = true;
+
+            var mbway = new MBWayRepository(); // partilha as mesmas associações estáticas
+            mbway.Associar("912000002", "987654321"); // Maria Santos
+            mbway.Associar("912000003", "555666777"); // Pedro Oliveira
+        }
     }
 }
