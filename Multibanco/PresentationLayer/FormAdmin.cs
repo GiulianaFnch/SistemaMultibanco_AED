@@ -83,5 +83,16 @@
         {
 
         }
+
+        private void btnAdicionarConta_Click(object sender, EventArgs e)
+        {
+            FormAdicionarConta formConta = new FormAdicionarConta();
+            formConta.Show();
+        }
+
+        private void lblSibisMenu_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

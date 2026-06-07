@@ -35,11 +35,13 @@
             lblPassword = new Label();
             btnLogin = new Button();
             pnlAdmin = new Panel();
+            btnAdicionarConta = new Button();
             btnSair = new Button();
             btnListarContas = new Button();
             btnEliminarCliente = new Button();
             btnAdicionarCliente = new Button();
             btnListarClientes = new Button();
+            lblSibisMenu = new Label();
             pnlAdmin.SuspendLayout();
             SuspendLayout();
             // 
@@ -102,7 +104,10 @@
             // 
             // pnlAdmin
             // 
+            pnlAdmin.BackColor = SystemColors.ControlDark;
             pnlAdmin.BorderStyle = BorderStyle.FixedSingle;
+            pnlAdmin.Controls.Add(lblSibisMenu);
+            pnlAdmin.Controls.Add(btnAdicionarConta);
             pnlAdmin.Controls.Add(btnSair);
             pnlAdmin.Controls.Add(btnListarContas);
             pnlAdmin.Controls.Add(btnEliminarCliente);
@@ -110,64 +115,109 @@
             pnlAdmin.Controls.Add(btnListarClientes);
             pnlAdmin.Location = new Point(-33, -4);
             pnlAdmin.Name = "pnlAdmin";
-            pnlAdmin.Size = new Size(835, 457);
+            pnlAdmin.Size = new Size(836, 457);
             pnlAdmin.TabIndex = 6;
             pnlAdmin.Visible = false;
             // 
+            // btnAdicionarConta
+            // 
+            btnAdicionarConta.BackColor = Color.PaleGoldenrod;
+            btnAdicionarConta.FlatAppearance.BorderSize = 0;
+            btnAdicionarConta.FlatStyle = FlatStyle.Flat;
+            btnAdicionarConta.Font = new Font("Segoe UI", 15F);
+            btnAdicionarConta.Location = new Point(273, 166);
+            btnAdicionarConta.Name = "btnAdicionarConta";
+            btnAdicionarConta.Size = new Size(146, 66);
+            btnAdicionarConta.TabIndex = 5;
+            btnAdicionarConta.Text = "Adicionar Conta";
+            btnAdicionarConta.UseVisualStyleBackColor = false;
+            btnAdicionarConta.Click += btnAdicionarConta_Click;
+            // 
             // btnSair
             // 
+            btnSair.BackColor = Color.Firebrick;
+            btnSair.FlatAppearance.BorderColor = Color.Red;
+            btnSair.FlatAppearance.BorderSize = 0;
+            btnSair.FlatStyle = FlatStyle.Flat;
             btnSair.Font = new Font("Segoe UI", 15F);
-            btnSair.Location = new Point(67, 354);
+            btnSair.ForeColor = SystemColors.ControlLightLight;
+            btnSair.Location = new Point(672, 329);
             btnSair.Name = "btnSair";
-            btnSair.Size = new Size(146, 66);
+            btnSair.Size = new Size(118, 50);
             btnSair.TabIndex = 4;
             btnSair.Text = "Sair";
-            btnSair.UseVisualStyleBackColor = true;
+            btnSair.UseVisualStyleBackColor = false;
             btnSair.Click += btnSair_Click_1;
             // 
             // btnListarContas
             // 
+            btnListarContas.BackColor = Color.PaleGoldenrod;
+            btnListarContas.FlatAppearance.BorderSize = 0;
+            btnListarContas.FlatStyle = FlatStyle.Flat;
             btnListarContas.Font = new Font("Segoe UI", 15F);
-            btnListarContas.Location = new Point(67, 273);
+            btnListarContas.Location = new Point(178, 273);
             btnListarContas.Name = "btnListarContas";
             btnListarContas.Size = new Size(146, 66);
             btnListarContas.TabIndex = 3;
             btnListarContas.Text = "Listar Contas";
-            btnListarContas.UseVisualStyleBackColor = true;
+            btnListarContas.UseVisualStyleBackColor = false;
             btnListarContas.Click += btnListarContas_Click;
             // 
             // btnEliminarCliente
             // 
+            btnEliminarCliente.BackColor = Color.PaleGoldenrod;
+            btnEliminarCliente.FlatAppearance.BorderSize = 0;
+            btnEliminarCliente.FlatStyle = FlatStyle.Flat;
             btnEliminarCliente.Font = new Font("Segoe UI", 15F);
-            btnEliminarCliente.Location = new Point(67, 188);
+            btnEliminarCliente.Location = new Point(390, 273);
             btnEliminarCliente.Name = "btnEliminarCliente";
             btnEliminarCliente.Size = new Size(146, 66);
             btnEliminarCliente.TabIndex = 2;
             btnEliminarCliente.Text = "Eliminar Cliente";
-            btnEliminarCliente.UseVisualStyleBackColor = true;
+            btnEliminarCliente.UseVisualStyleBackColor = false;
             btnEliminarCliente.Click += btnEliminarCliente_Click;
             // 
             // btnAdicionarCliente
             // 
+            btnAdicionarCliente.BackColor = Color.PaleGoldenrod;
+            btnAdicionarCliente.FlatAppearance.BorderSize = 0;
+            btnAdicionarCliente.FlatStyle = FlatStyle.Flat;
             btnAdicionarCliente.Font = new Font("Segoe UI", 15F);
-            btnAdicionarCliente.Location = new Point(67, 111);
+            btnAdicionarCliente.ForeColor = Color.Black;
+            btnAdicionarCliente.Location = new Point(91, 166);
             btnAdicionarCliente.Name = "btnAdicionarCliente";
             btnAdicionarCliente.Size = new Size(146, 66);
             btnAdicionarCliente.TabIndex = 1;
             btnAdicionarCliente.Text = "Adicionar Cliente";
-            btnAdicionarCliente.UseVisualStyleBackColor = true;
+            btnAdicionarCliente.UseVisualStyleBackColor = false;
             btnAdicionarCliente.Click += btnAdicionarCliente_Click;
             // 
             // btnListarClientes
             // 
+            btnListarClientes.BackColor = Color.PaleGoldenrod;
+            btnListarClientes.FlatAppearance.BorderColor = Color.White;
+            btnListarClientes.FlatAppearance.BorderSize = 0;
+            btnListarClientes.FlatStyle = FlatStyle.Flat;
             btnListarClientes.Font = new Font("Segoe UI", 15F);
-            btnListarClientes.Location = new Point(67, 33);
+            btnListarClientes.Location = new Point(480, 166);
             btnListarClientes.Name = "btnListarClientes";
             btnListarClientes.Size = new Size(146, 66);
             btnListarClientes.TabIndex = 0;
             btnListarClientes.Text = "Listar Clientes";
-            btnListarClientes.UseVisualStyleBackColor = true;
+            btnListarClientes.UseVisualStyleBackColor = false;
             btnListarClientes.Click += btnListarClientes_Click;
+            // 
+            // lblSibisMenu
+            // 
+            lblSibisMenu.AutoSize = true;
+            lblSibisMenu.Font = new Font("Segoe UI", 25F, FontStyle.Bold);
+            lblSibisMenu.ForeColor = SystemColors.ControlText;
+            lblSibisMenu.Location = new Point(203, 53);
+            lblSibisMenu.Name = "lblSibisMenu";
+            lblSibisMenu.Size = new Size(333, 46);
+            lblSibisMenu.TabIndex = 6;
+            lblSibisMenu.Text = "Administrador SIBS";
+            lblSibisMenu.Click += lblSibisMenu_Click;
             // 
             // FormAdmin
             // 
@@ -184,6 +234,7 @@
             Name = "FormAdmin";
             Text = "FormAdmin";
             pnlAdmin.ResumeLayout(false);
+            pnlAdmin.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -202,5 +253,7 @@
         private Button btnEliminarCliente;
         private Button btnAdicionarCliente;
         private Button btnListarClientes;
+        private Button btnAdicionarConta;
+        private Label lblSibisMenu;
     }
 }
