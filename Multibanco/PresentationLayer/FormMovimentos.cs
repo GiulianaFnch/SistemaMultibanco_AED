@@ -21,6 +21,10 @@ namespace Multibanco.PresentationLayer
             lblConta.Text = $"Conta: {contaAtual.AccountNumber}  •  Titular: {contaAtual.HolderName}";
             lblSaldo.Text = $"Saldo atual: €{contaAtual.Balance:F2}";
 
+            // Intervalo de datas sugerido por defeito: do último mês até hoje.
+            dtpInicio.Value = DateTime.Now.AddMonths(-1);
+            dtpFim.Value    = DateTime.Now;
+
             CriarColunas();         // prepara as colunas da tabela uma única vez
             MostrarTodosMovimentos(); // carrega todos os movimentos ao abrir
         }
@@ -94,6 +98,30 @@ namespace Multibanco.PresentationLayer
 
             lblResumo.Text =
                 $"{movimentos.Count} movimento(s)   |   Entradas: €{entradas:F2}   |   Saídas: €{Math.Abs(saidas):F2}";
+        }
+
+        // Pesquisa os movimentos entre as duas datas escolhidas.
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            DateTime inicio = dtpInicio.Value.Date; // início do dia escolhido
+            DateTime fim    = dtpFim.Value.Date;     // o serviço já inclui o dia inteiro do fim
+
+            // A data inicial não pode ser posterior à data final.
+            if (inicio > fim)
+            {
+                MessageBox.Show("A data inicial não pode ser posterior à data final.",
+                    "Datas inválidas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var movimentos = _accountService.GetMovimentosByDateRange(_contaAtual.AccountNumber!, inicio, fim);
+            PreencherTabela(movimentos);
+        }
+
+        // Remove o filtro e volta a mostrar todos os movimentos.
+        private void btnVerTodos_Click(object sender, EventArgs e)
+        {
+            MostrarTodosMovimentos();
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
