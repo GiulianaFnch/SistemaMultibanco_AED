@@ -1,4 +1,5 @@
 using Multibanco.BusinessLogicLayer;
+using Multibanco.DataAccessLayer;
 using Multibanco.Models;
 using Multibanco.PresentationLayer;
 
@@ -14,12 +15,20 @@ namespace Multibanco
         private Button btnPagamentos;
         private Button btnEmprestimo;
 
+        // Botão adicionado pelo Elemento 3 (mesmo método: criado via código)
+        private Button btnMovimentos;
+
         public Form1()
         {
             InitializeComponent();
             _accountService = new AccountService();
             ConfigurarEventos();
             AdicionarBotoesExtras();
+            AdicionarBotoesElemento3();
+
+            // Carrega alguns movimentos de exemplo para a demonstração do extrato
+            // (só corre uma vez; ver DadosDemo.cs). Quando o SQL estiver ligado, basta remover esta linha.
+            DadosDemo.CarregarMovimentosExemplo();
         }
 
         private void ConfigurarEventos()
@@ -68,6 +77,33 @@ namespace Multibanco
 
             pnlMenu.Controls.Add(btnPagamentos);
             pnlMenu.Controls.Add(btnEmprestimo);
+        }
+
+        // Adiciona o botão "MOVIMENTOS" (Elemento 3) ao menu, também por código
+        // para não mexer no Designer e evitar conflitos com o trabalho dos colegas.
+        private void AdicionarBotoesElemento3()
+        {
+            btnMovimentos = new Button
+            {
+                BackColor               = Color.DarkSlateBlue,
+                Cursor                  = Cursors.Hand,
+                Font                    = new Font("Arial", 12F, FontStyle.Bold),
+                ForeColor               = Color.White,
+                Location                = new Point(330, 220),
+                Size                    = new Size(220, 50),
+                Text                    = "📄 MOVIMENTOS",
+                UseVisualStyleBackColor = false
+            };
+            btnMovimentos.Click += BtnMovimentos_Click;
+
+            pnlMenu.Controls.Add(btnMovimentos);
+        }
+
+        // Abre o extrato (FormMovimentos) com a conta atual.
+        private void BtnMovimentos_Click(object sender, EventArgs e)
+        {
+            var form = new FormMovimentos(currentAccount, _accountService);
+            form.ShowDialog(this);
         }
 
         // --- Login ---
