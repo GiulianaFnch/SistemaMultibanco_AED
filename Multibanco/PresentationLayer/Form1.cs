@@ -1,4 +1,5 @@
 using Multibanco.BusinessLogicLayer;
+using Multibanco.DataAccessLayer;
 using Multibanco.Models;
 using Multibanco.PresentationLayer;
 
@@ -14,12 +15,22 @@ namespace Multibanco
         private Button btnPagamentos;
         private Button btnEmprestimo;
 
+        // Botões adicionados pelo Elemento 3 (mesmo método: criados via código)
+        private Button btnMovimentos;
+        private Button btnMBWay;
+
         public Form1()
         {
             InitializeComponent();
             _accountService = new AccountService();
             ConfigurarEventos();
             AdicionarBotoesExtras();
+            AdicionarBotoesElemento3();
+
+            // Carrega dados de exemplo para a demonstração (movimentos e MBWay).
+            // Só correm uma vez; ver DadosDemo.cs. Quando o SQL estiver ligado, basta remover estas linhas.
+            DadosDemo.CarregarMovimentosExemplo();
+            DadosDemo.CarregarMBWayExemplo();
         }
 
         private void ConfigurarEventos()
@@ -70,6 +81,62 @@ namespace Multibanco
             pnlMenu.Controls.Add(btnEmprestimo);
         }
 
+        // Adiciona o botão "MOVIMENTOS" (Elemento 3) ao menu, também por código
+        // para não mexer no Designer e evitar conflitos com o trabalho dos colegas.
+        private void AdicionarBotoesElemento3()
+        {
+            btnMovimentos = new Button
+            {
+                BackColor               = Color.DarkSlateBlue,
+                Cursor                  = Cursors.Hand,
+                Font                    = new Font("Arial", 12F, FontStyle.Bold),
+                ForeColor               = Color.White,
+                Location                = new Point(330, 220),
+                Size                    = new Size(220, 50),
+                Text                    = "📄 MOVIMENTOS",
+                UseVisualStyleBackColor = false
+            };
+            btnMovimentos.Click += BtnMovimentos_Click;
+
+            btnMBWay = new Button
+            {
+                BackColor               = Color.MediumVioletRed,
+                Cursor                  = Cursors.Hand,
+                Font                    = new Font("Arial", 12F, FontStyle.Bold),
+                ForeColor               = Color.White,
+                Location                = new Point(330, 280),
+                Size                    = new Size(220, 50),
+                Text                    = "📱 MBWAY",
+                UseVisualStyleBackColor = false
+            };
+            btnMBWay.Click += BtnMBWay_Click;
+
+            pnlMenu.Controls.Add(btnMovimentos);
+            pnlMenu.Controls.Add(btnMBWay);
+        }
+
+        // Abre o extrato (FormMovimentos) com a conta atual.
+        private void BtnMovimentos_Click(object sender, EventArgs e)
+        {
+            var form = new FormMovimentos(currentAccount, _accountService);
+            form.ShowDialog(this);
+        }
+
+        // Abre o formulário MBWay com a conta atual.
+        private void BtnMBWay_Click(object sender, EventArgs e)
+        {
+            var form = new FormMBWay(currentAccount, _accountService);
+            form.ShowDialog(this);
+        }
+
+        // Logo a seguir ao login, abre automaticamente o extrato para o cliente
+        // ver de imediato a sua atividade recente (requisito do Elemento 3).
+        private void MostrarMovimentosAutomaticamente()
+        {
+            var form = new FormMovimentos(currentAccount, _accountService);
+            form.ShowDialog(this);
+        }
+
         // --- Login ---
 
         private void BtnLogin_Click(object sender, EventArgs e)
@@ -85,6 +152,7 @@ namespace Multibanco
             if (currentAccount != null)
             {
                 MostrarMenu();
+                MostrarMovimentosAutomaticamente(); // Elemento 3: abre o extrato logo após o login
             }
             else
             {
