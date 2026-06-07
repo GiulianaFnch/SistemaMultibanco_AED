@@ -134,7 +134,7 @@
             btnListarContas.TabIndex = 3;
             btnListarContas.Text = "Listar Contas";
             btnListarContas.UseVisualStyleBackColor = true;
-            btnListarContas.Click += btnListarContas_Click_1;
+            btnListarContas.Click += btnListarContas_Click;
             // 
             // btnEliminarCliente
             // 

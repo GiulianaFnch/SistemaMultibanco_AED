@@ -55,10 +55,8 @@
 
         private void btnListarContas_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcionalidade: Listar todas as contas.",
-                "Listar Contas",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            FormListarContas formContas = new FormListarContas();
+            formContas.Show();
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -77,11 +75,6 @@
         }
 
         private void btnEliminarCliente_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnListarContas_Click_1(object sender, EventArgs e)
         {
 
         }
