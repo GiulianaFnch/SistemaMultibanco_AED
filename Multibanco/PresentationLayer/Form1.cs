@@ -29,8 +29,8 @@ namespace Multibanco
 
             // Carrega dados de exemplo para a demonstração (movimentos e MBWay).
             // Só correm uma vez; ver DadosDemo.cs. Quando o SQL estiver ligado, basta remover estas linhas.
-            DadosDemo.CarregarMovimentosExemplo();
-            DadosDemo.CarregarMBWayExemplo();
+            //DadosDemo.CarregarMovimentosExemplo();
+            //DadosDemo.CarregarMBWayExemplo();
         }
 
         private void ConfigurarEventos()
@@ -240,10 +240,9 @@ namespace Multibanco
                     bool sucesso = _accountService.RealizarLevantamento(currentAccount.AccountNumber, valor, out string erro);
                     if (sucesso)
                     {
-                        currentAccount.Balance -= valor;
-                        lblMensagemOperacao.Text = $"✅ Levantamento de €{valor:F2} realizado com sucesso!";
-                        System.Threading.Thread.Sleep(2000);
-                        MostrarMenu();
+                        // Apenas pede ao serviço para ler o saldo atualizado da base de dados!
+                        currentAccount = _accountService.GetAccount(currentAccount.AccountNumber);
+                        lblMensagemOperacao.Text = $"Operação com sucesso. Novo saldo: {currentAccount.Balance}";
                     }
                     else
                     {

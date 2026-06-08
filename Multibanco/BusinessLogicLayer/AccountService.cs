@@ -24,6 +24,12 @@ namespace Multibanco.BusinessLogicLayer
 
         // --- Operações Básicas ---
 
+        public BankAccount GetAccount(string accountNumber)
+        {
+            // O Serviço pede ao Repositório para ir buscar a conta ao SQL
+            return _repository.GetAccount(accountNumber);
+        }
+
         public bool RealizarLevantamento(string accountNumber, decimal valor, out string mensagemErro)
         {
             mensagemErro = string.Empty;
