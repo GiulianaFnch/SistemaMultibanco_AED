@@ -1,28 +1,60 @@
-# 🏦 Sistema Multibanco - Configuração da Base de Dados
+# 🏦 Sistema Multibanco Simulado
 
-Este projeto utiliza o **SQL Server Express LocalDB**, uma versão leve do SQL Server que já vem instalada com o Visual Studio. **Não é necessário instalar a versão completa e pesada do SQL Server.**
+Projeto final desenvolvido para a disciplina de Algoritmia e Estruturas de Dados (AED). Trata-se de uma aplicação desktop que simula o funcionamento de uma caixa Multibanco (ATM) e a gestão de contas bancárias de clientes.
 
-Para que o projeto funcione no teu computador, precisas de criar a base de dados localmente. Segue este passo a passo (demora menos de 5 minutos):
+## 🏗️ Arquitetura do Projeto
+O projeto foi rigorosamente desenvolvido seguindo a **Arquitetura em Três Camadas (3-Tier Architecture)**, garantindo a separação de responsabilidades, segurança e facilidade de manutenção:
 
-## 🛠️ Pré-requisitos
-1. Ter o **Visual Studio** instalado (com a carga de trabalho "Armazenamento e processamento de dados" ativa no Visual Studio Installer).
-2. Ter o **SQL Server Management Studio (SSMS)** instalado. Se não tens, [descarrega gratuitamente aqui](https://learn.microsoft.com/pt-br/sql/ssms/download-sql-server-management-studio-ssms).
+1. **🖥️ Presentation Layer (Camada de Apresentação):** Desenvolvida em Windows Forms. Contém apenas a interface gráfica (ecrãs, botões). Não realiza cálculos nem comunica com a base de dados.
+2. **🧠 Business Logic Layer (Camada de Lógica de Negócio):** O "cérebro" da aplicação (`AccountService`, `MBWayService`). Valida regras de negócio (ex: verificar se há saldo suficiente, calcular taxas de juros para empréstimos).
+3. **🗄️ Data Access Layer (Camada de Dados):** A única camada com permissão para interagir com o SQL Server (`AccountRepository`). Responsável por executar comandos de leitura e escrita (SELECT, INSERT, UPDATE).
+
+## ✨ Funcionalidades Principais
+
+**Administração (User: `sibs`)**
+* Gestão completa (CRUD) de Clientes e Contas.
+* Listagem de todas as contas ativas no sistema.
+
+**Operações de Cliente**
+* Autenticação segura por Número de Conta e PIN.
+* Consulta de Saldo e visualização de Extrato de Movimentos (com filtros de datas).
+* Levantamentos e Depósitos.
+* Transferências Nacionais entre contas.
+
+**🌟 Funcionalidades Extra (Criatividade)**
+* **MBWay:** Associação de número de telemóvel à conta e envio de dinheiro via telemóvel.
+* **Pagamento de Serviços:** Pagamentos com Entidade, Referência e Valor.
+* **Empréstimos:** Simulação e contração de empréstimos com cálculo automático de juros mediante o prazo (meses) e cálculo da prestação mensal.
 
 ---
 
-## 🚀 Passo a Passo para criar a Base de Dados
+## 🛠️ Tecnologias Utilizadas
+* **Linguagem:** C# (.NET 8.0)
+* **Interface Gráfica:** Windows Forms
+* **Base de Dados:** SQL Server Express LocalDB (`Microsoft.Data.SqlClient`)
+* **Testes Automáticos:** xUnit (Testes de Integração e Testes Unitários)
+
+---
+
+## 🚀 Como Executar o Projeto Localmente
+
+Como a aplicação utiliza o **SQL Server Express LocalDB**, não é necessário instalar a versão completa do SQL Server. Segue os passos abaixo para configurar o ambiente em menos de 5 minutos:
+
+### Pré-requisitos
+1. **Visual Studio** (com a framework de desenvolvimento .NET desktop instalada).
+2. **SQL Server Management Studio (SSMS)**.
 
 ### Passo 1: Ligar ao Servidor Local
-1. Abre o **SQL Server Management Studio (SSMS)**.
-2. Vai aparecer a janela **"Connect to Server"**. Preenche exatamente assim:
+1. Abre o **SSMS**.
+2. Na janela "Connect to Server", preenche:
    * **Server type:** `Database Engine`
-   * **Server name:** `(localdb)\MSSQLLocalDB` *(Atenção à barra invertida!)*
+   * **Server name:** `(localdb)\MSSQLLocalDB`
    * **Authentication:** `Windows Authentication`
-3. Clica no botão **Connect**.
+3. Clica em **Connect**.
 
-### Passo 2: Criar a Base de Dados e as Tabelas
-1. Já dentro do SSMS, clica no botão **New Query** (Nova Consulta) no menu superior.
-2. Copia e cola o script SQL abaixo na janela em branco que se abriu:
+### Passo 2: Criar a Base de Dados
+1. No SSMS, clica em **New Query**.
+2. Copia e executa (`F5`) o seguinte script SQL para criar a estrutura e inserir dados de teste:
 
 ```sql
 -- 1. Criar a Base de Dados
