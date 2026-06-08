@@ -3,7 +3,17 @@ using Multibanco.DataAccessLayer;
 
 namespace Multibanco.BusinessLogicLayer
 {
+    /// <summary>
+    /// CAMADA DE LÓGICA DE NEGÓCIO (Business Logic Layer).
+    /// Este ficheiro atua como o "cérebro" do sistema. Ele faz a ponte entre a Interface Gráfica (Formulários) e os Dados (Repository).
+    /// É aqui que se testam todas as regras de negócio (ex: verificar se há saldo suficiente antes de um levantamento, 
+    /// calcular taxas de juros ou validar transferências). Se a operação for válida, pede ao AccountRepository para a gravar.
+    /// Nunca fala diretamente com o SQL nem mexe em elementos visuais do ecrã.
+    /// </summary>
     public class AccountService
+    {
+        // ... o teu código continua aqui ...
+        public class AccountService
     {
         private readonly AccountRepository _repository;
 

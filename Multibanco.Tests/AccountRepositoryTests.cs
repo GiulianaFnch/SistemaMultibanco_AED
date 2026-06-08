@@ -2,6 +2,11 @@
 using Multibanco.DataAccessLayer;
 using Multibanco.Models;
 
+´/// --- Testes de Integração com a framework xUnit.
+ /// Usando o padrão AAA (Arrange, Act, Assert),
+ /// criei testes que vão efetivamente ao SQL Server escrever um movimento,
+ /// abater um saldo e verificar se a operação correu bem de forma automática.
+
 namespace Multibanco.Tests
 {
     public class AccountRepositoryTests

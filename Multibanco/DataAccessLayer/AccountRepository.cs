@@ -3,7 +3,14 @@ using Multibanco.Models;
 
 namespace Multibanco.DataAccessLayer
 {
-    public class AccountRepository
+    /// <summary>
+    /// CAMADA DE DADOS (Data Access Layer). 
+    /// Este ficheiro é o ÚNICO que tem permissão para comunicar diretamente com a Base de Dados (SQL Server).
+    /// A sua função exclusiva é executar comandos SQL (SELECT, INSERT, UPDATE) para ler e gravar as informações 
+    /// de Contas e Movimentos de forma persistente. Não contém regras matemáticas nem toma decisões de negócio.
+    /// </summary>
+
+    public class AccountRepository  
     {
         // Connection string para o LocalDB
         private readonly string _connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=SistemaMultibancoDB;Trusted_Connection=True;TrustServerCertificate=True;";
