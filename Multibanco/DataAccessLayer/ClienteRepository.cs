@@ -5,7 +5,7 @@ namespace Multibanco.DataAccessLayer
 {
     public class ClienteRepository
     {
-        private readonly string _connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=SistemaMultibancoDB;Trusted_Connection=True;TrustServerCertificate=True;";
+        private readonly string _connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=SistemaMultibancoDB;Trusted_Connection=True;TrustServerCertificate=True;Connect Timeout=1;";
 
         // Dados em memória para demo quando não há base de dados
         private static List<Cliente> _clientesDemo = new List<Cliente>

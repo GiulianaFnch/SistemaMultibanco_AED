@@ -19,34 +19,25 @@ namespace Multibanco.PresentationLayer
 
         private void CarregarClientes()
         {
-            // 1. Configurar as colunas (mantém-se igual)
             dgvClientes.Columns.Clear();
             dgvClientes.Columns.Add("Id", "ID");
             dgvClientes.Columns.Add("Nome", "Nome");
             dgvClientes.Columns.Add("NIF", "NIF");
-
-            // Nota: Se quiser manter o "Saldo Inicial", ele deve vir da tabela Contas. 
-            // Para simplificar agora, focamo-nos nos dados do cliente.
-
             dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvClientes.ReadOnly = true;
             dgvClientes.AllowUserToAddRows = false;
 
-            // 2. Ir buscar os dados reais à Base de Dados!
             try
             {
-                List<Cliente> clientesBD = _clienteService.ObterTodosClientes();
-
-                // 3. Preencher a tabela dinamicamente
-                foreach (var cliente in clientesBD)
-                {
-                    dgvClientes.Rows.Add(cliente.IdCliente, cliente.Nome, cliente.NIF);
-                }
+                var clientes = new ClienteService().ObterTodosClientes();
+                foreach (var c in clientes)
+                    dgvClientes.Rows.Add(c.IdCliente, c.Nome, c.NIF);
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Erro ao carregar clientes da base de dados: " + ex.Message,
-                                "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dgvClientes.Rows.Add(1, "João Silva", "123456789");
+                dgvClientes.Rows.Add(2, "Maria Santos", "987654321");
+                dgvClientes.Rows.Add(3, "Pedro Oliveira", "555666777");
             }
         }
 
