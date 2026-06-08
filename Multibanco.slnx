@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="Multibanco.Tests/Multibanco.Tests.csproj" Id="7595fcf6-6bf5-43f5-bc35-aa75533f0344" />
   <Project Path="Multibanco/Multibanco.csproj" />
 </Solution>
