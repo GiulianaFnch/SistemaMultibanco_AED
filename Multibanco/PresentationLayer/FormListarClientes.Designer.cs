@@ -69,6 +69,7 @@
             dgvClientes.Name = "dgvClientes";
             dgvClientes.Size = new Size(454, 197);
             dgvClientes.TabIndex = 3;
+            //dgvClientes.CellContentClick += dgvClientes_CellContentClick;
             // 
             // btnFechar
             // 
