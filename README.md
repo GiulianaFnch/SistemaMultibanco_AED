@@ -56,12 +56,29 @@ CREATE TABLE Movimentos (
 );
 GO
 
--- 5. Inserir dados de teste para podermos fazer Login!
+-- 5. Criar a Tabela de Clientes
+CREATE TABLE Clientes (
+    IdCliente INT PRIMARY KEY, -- Usamos IDs manuais para bater certo com as contas já criadas (1, 2, 3)
+    Nome NVARCHAR(100) NOT NULL,
+    NIF NVARCHAR(9) UNIQUE NOT NULL
+);
+GO
+
+-- 6. Inserir dados de teste para podermos fazer Login!
 INSERT INTO Contas (IdCliente, AccountNumber, PIN, Balance, HolderName, IsDefault)
 VALUES 
 (1, '123456789', '1234', 5000.00, 'João Silva', 1),
 (2, '987654321', '5678', 2500.00, 'Maria Santos', 1),
 (3, '555666777', '0000', 10000.00, 'Pedro Oliveira', 1);
+GO
+
+-- 7. Inserir os dados de teste na tabela clientes
+INSERT INTO Clientes (IdCliente, Nome, NIF)
+VALUES 
+(1, 'João Silva', '123456789'),
+(2, 'Maria Santos', '987654321'),
+(3, 'Pedro Oliveira', '555666777');
+
 GO
 ```
 
