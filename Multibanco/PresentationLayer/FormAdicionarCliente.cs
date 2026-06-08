@@ -1,53 +1,30 @@
-﻿namespace Multibanco.PresentationLayer
+﻿using Multibanco.BusinessLogicLayer;
+
+namespace Multibanco.PresentationLayer
 {
     public partial class FormAdicionarCliente : Form
     {
-        public FormAdicionarCliente()
-        {
-            InitializeComponent();
-        }
+        private readonly ClienteService _service = new ClienteService();
+
+        public FormAdicionarCliente() { InitializeComponent(); }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            // Validações - campos não podem estar vazios
-            if (string.IsNullOrWhiteSpace(txtNome.Text))
-            {
-                MessageBox.Show("Por favor preencha o Nome!",
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                return;
-            }
+            if (string.IsNullOrWhiteSpace(txtNome.Text)) { MessageBox.Show("Preencha o Nome!"); return; }
+            if (string.IsNullOrWhiteSpace(txtNIF.Text)) { MessageBox.Show("Preencha o NIF!"); return; }
 
-            if (string.IsNullOrWhiteSpace(txtNIF.Text))
+            if (MessageBox.Show($"Criar cliente:\nNome: {txtNome.Text}\nNIF: {txtNIF.Text}\nSaldo: 100€\n\nConfirma?", "Confirmar", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                MessageBox.Show("Por favor preencha o NIF!",
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Confirmar criação do cliente
-            DialogResult resultado = MessageBox.Show(
-                $"Criar cliente:\nNome: {txtNome.Text}\nNIF: {txtNIF.Text}\nSaldo inicial: 100€\n\nConfirma?",
-                "Confirmar",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (resultado == DialogResult.Yes)
-            {
-                MessageBox.Show("Cliente criado com sucesso! Saldo inicial de 100€ atribuído.",
-                    "Sucesso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                this.Close();
+                try
+                {
+                    _service.AdicionarCliente(txtNome.Text, txtNIF.Text);
+                    MessageBox.Show("Cliente criado com sucesso!");
+                    this.Close();
+                }
+                catch (Exception ex) { MessageBox.Show("Erro: " + ex.Message); }
             }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        private void btnCancelar_Click(object sender, EventArgs e) { this.Close(); }
     }
 }

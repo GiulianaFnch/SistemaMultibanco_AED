@@ -1,70 +1,36 @@
-﻿namespace Multibanco.PresentationLayer
+﻿using Multibanco.BusinessLogicLayer;
+
+namespace Multibanco.PresentationLayer
 {
     public partial class FormEliminarCliente : Form
     {
-        public FormEliminarCliente()
-        {
-            InitializeComponent();
-        }
+        private readonly ClienteService _service = new ClienteService();
+
+        public FormEliminarCliente() { InitializeComponent(); }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            // Validação - campo não pode estar vazio
-            if (string.IsNullOrWhiteSpace(txtID.Text))
-            {
-                MessageBox.Show("Por favor insira o ID do cliente!",
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                return;
-            }
+            if (string.IsNullOrWhiteSpace(txtID.Text)) { MessageBox.Show("Insira o ID!"); return; }
+            if (!int.TryParse(txtID.Text, out int id)) { MessageBox.Show("ID tem de ser número!"); return; }
 
-            // Validação - tem de ser um número
-            if (!int.TryParse(txtID.Text, out int id))
+            if (MessageBox.Show($"Eliminar cliente ID {id}?", "Confirmar", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                MessageBox.Show("O ID tem de ser um número!",
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Verificação de saldo (quando houver base de dados vai verificar aqui)
-            // Por agora mostra mensagem de confirmação
-            DialogResult resultado = MessageBox.Show(
-                $"Tem a certeza que quer eliminar o cliente com ID {id}?\nEsta ação não pode ser desfeita!",
-                "Confirmar Eliminação",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning);
-
-            if (resultado == DialogResult.Yes)
-            {
-                MessageBox.Show("Cliente eliminado com sucesso!",
-                    "Sucesso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                this.Close();
+                try
+                {
+                    if (_service.EliminarCliente(id))
+                    {
+                        MessageBox.Show("Cliente eliminado!");
+                        this.Close();
+                    }
+                    else MessageBox.Show("Não pode eliminar - cliente tem saldo!");
+                }
+                catch (Exception ex) { MessageBox.Show("Erro: " + ex.Message); }
             }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnEliminar_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCancelar_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void btnCancelar_Click(object sender, EventArgs e) { this.Close(); }
+        private void btnEliminar_Click_1(object sender, EventArgs e) { }
+        private void btnCancelar_Click_1(object sender, EventArgs e) { }
+        private void txtID_TextChanged(object sender, EventArgs e) { }
     }
 }
