@@ -12,17 +12,12 @@ namespace Multibanco.BusinessLogicLayer
     /// </summary>
     public class AccountService
     {
-        // ... o teu código continua aqui ...
-        public class AccountService
-    {
         private readonly AccountRepository _repository;
 
         public AccountService()
         {
             _repository = new AccountRepository();
         }
-
-        // --- Autenticação ---
 
         public BankAccount Login(string accountNumber, string pin)
         {
@@ -32,11 +27,8 @@ namespace Multibanco.BusinessLogicLayer
             return null;
         }
 
-        // --- Operações Básicas ---
-
         public BankAccount GetAccount(string accountNumber)
         {
-            // O Serviço pede ao Repositório para ir buscar a conta ao SQL
             return _repository.GetAccount(accountNumber);
         }
 
@@ -78,8 +70,6 @@ namespace Multibanco.BusinessLogicLayer
             });
         }
 
-        // --- Transferência entre Contas ---
-
         public bool RealizarTransferencia(string contaOrigem, string contaDestino, decimal valor, out string mensagemErro)
         {
             mensagemErro = string.Empty;
@@ -117,8 +107,6 @@ namespace Multibanco.BusinessLogicLayer
             return true;
         }
 
-        // --- Pagamentos Pré-definidos ---
-
         public bool RealizarPagamento(string accountNumber, string servico, string referencia, decimal valor, out string mensagemErro)
         {
             mensagemErro = string.Empty;
@@ -140,8 +128,6 @@ namespace Multibanco.BusinessLogicLayer
             });
             return true;
         }
-
-        // --- Empréstimos ---
 
         public bool SolicitarEmprestimo(string accountNumber, decimal montante, int prazoMeses,
             out string mensagemErro, out decimal prestacaoMensal)
@@ -191,8 +177,6 @@ namespace Multibanco.BusinessLogicLayer
             decimal fator = (decimal)Math.Pow((double)(1 + taxaMensal), prazoMeses);
             return montante * (taxaMensal * fator) / (fator - 1);
         }
-
-        // --- Movimentos (para Elemento 3 usar) ---
 
         public List<Movimento> GetMovimentos(string accountNumber)
         {
