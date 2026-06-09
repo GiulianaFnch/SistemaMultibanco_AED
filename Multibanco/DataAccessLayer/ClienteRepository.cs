@@ -7,7 +7,6 @@ namespace Multibanco.DataAccessLayer
     {
         private readonly string _connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=SistemaMultibancoDB;Trusted_Connection=True;TrustServerCertificate=True;Connect Timeout=1;";
 
-        // Dados em memória para demo quando não há base de dados
         private static List<Cliente> _clientesDemo = new List<Cliente>
         {
             new Cliente { IdCliente = 1, Nome = "João Silva", NIF = "123456789" },
@@ -112,7 +111,7 @@ namespace Multibanco.DataAccessLayer
                 using (var conn = new SqlConnection(_connectionString))
                 {
                     conn.Open();
-                    using (var cmd = new SqlCommand("INSERT INTO Contas (IdCliente, AccountNumber, PIN, Balance, HolderName, IsDefault) SELECT @I, @A, @P, 100, Nome, 0 FROM Clientes WHERE IdCliente=@I", conn))
+                    using (var cmd = new SqlCommand("INSERT INTO Contas (IdCliente, AccountNumber, PIN, Balance, HolderName, IsDefault) SELECT @I, @A, @P, 100, Nome, 1 FROM Clientes WHERE IdCliente=@I", conn))
                     {
                         cmd.Parameters.AddWithValue("@I", idCliente);
                         cmd.Parameters.AddWithValue("@A", num);
@@ -124,7 +123,7 @@ namespace Multibanco.DataAccessLayer
             catch
             {
                 var titular = _clientesDemo.FirstOrDefault(c => c.IdCliente == idCliente);
-                _contasDemo.Add(new BankAccount(num, pin, 100, titular?.Nome ?? "Cliente") { IdConta = _contasDemo.Count + 1, IdCliente = idCliente, IsDefault = false });
+                _contasDemo.Add(new BankAccount(num, pin, 100, titular?.Nome ?? "Cliente") { IdConta = _contasDemo.Count + 1, IdCliente = idCliente, IsDefault = true });
             }
         }
     }
