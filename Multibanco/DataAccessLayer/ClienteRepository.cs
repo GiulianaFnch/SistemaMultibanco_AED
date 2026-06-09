@@ -78,10 +78,16 @@ namespace Multibanco.DataAccessLayer
                 }
                 return true;
             }
+            
             catch
             {
                 var cliente = _clientesDemo.FirstOrDefault(c => c.IdCliente == id);
-                if (cliente != null) { _clientesDemo.Remove(cliente); return true; }
+                if (cliente != null)
+                {
+                    _clientesDemo.Remove(cliente);
+                    _contasDemo.RemoveAll(c => c.IdCliente == id);
+                    return true;
+                }
                 return false;
             }
         }
